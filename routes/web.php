@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CategorieController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,6 +61,11 @@ Route::middleware(['auth'])->group(function () {
     ->middleware('role:petugas')->name('petugas.transaksi.update');
 
     Route::resource('transaction', TransactionController::class);
+
+    Route::get('/petugas/kategori', [CategorieController::class, 'index'])
+    ->middleware('role:petugas')->name('petugas.kategori');
+
+    Route::resource('kategori', CategorieController::class);
 });
 
 Route::middleware('auth')->group(function () {

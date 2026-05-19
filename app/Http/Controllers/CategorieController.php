@@ -10,11 +10,20 @@ class CategorieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $search = $request->search;
 
+        $category = Categorie::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where('category_name', 'like', "%$search%");
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+        
+        return view('petugas.categories.index', compact('category'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -60,6 +69,9 @@ class CategorieController extends Controller
      */
     public function destroy(categorie $categorie)
     {
-        //
+        $categorie->delete();
+
+        return redirect()->route('petugas.kategori')
+            ->with('success', 'Data transaksi berhasil dihapus');
     }
 }

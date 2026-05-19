@@ -45,6 +45,11 @@
                         <i class="fa-solid fa-cash-register w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Transaksi</span>
                     </a>
+
+                    <a href="/petugas/kategori" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('petugas/kategori') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                        <i class="fa-solid fa-layer-group w-5 text-center text-lg"></i>
+                        <span class="text-sm">Kelola Kategori</span>
+                    </a>
                 </nav>
 
                 <div class="p-4 border-t border-white/10 bg-primary-light/10 shrink-0">

@@ -94,7 +94,6 @@ class TransactionController extends Controller
     public function update(Request $request, transaction $transaction)
     {
         $request->validate([
-            'transaction_no' => 'required',
             'date' => 'required',
             'customer_name' => 'required',
             'total_price' => 'required',
@@ -102,7 +101,6 @@ class TransactionController extends Controller
         ]);
 
         $transaction->update([
-            'transaction_no' => $request->transaction_no,
             'date' => $request->date,
             'customer_name' => $request->customer_name,
             'total_price' => $request->total_price,
