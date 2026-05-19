@@ -58,7 +58,7 @@ class TransactionController extends Controller
             $number = $lastNumber + 1;
         }
 
-        $transactionNo = 'TRX-' . str_pad($number, 4, '0', STR_PAD_LEFT);
+        $transactionNo = 'INV-' . str_pad($number, 4, '0', STR_PAD_LEFT);
 
         Transaction::create([
             'transaction_no' => $transactionNo,
