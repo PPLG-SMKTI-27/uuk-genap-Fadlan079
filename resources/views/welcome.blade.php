@@ -181,7 +181,6 @@
 
                     </div>
 
-                    <!-- Footer -->
                     <div class="mt-5 pt-4 border-t border-gray-100">
                         <button class="w-full bg-primary text-white font-semibold py-2.5 rounded text-sm">
                             Simpan Perubahan Stok
@@ -197,7 +196,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-12">
             <h2 class="text-2xl font-bold text-text mb-2">Cara Kerja Sistem</h2>
-            <p class="text-muted">Proses pencatatan stok dirancang sesederhana mungkin untuk efisiensi waktu.</p>
+            <p class="text-muted">
+                Proses pencatatan stok dan transaksi dirancang sederhana agar pengelolaan barang lebih cepat dan efisien.
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -206,9 +207,9 @@
                 <div class="w-10 h-10 bg-secondary text-text font-bold text-lg flex items-center justify-center rounded mb-4">
                     1
                 </div>
-                <h3 class="text-lg font-bold text-primary mb-2">Login</h3>
+                <h3 class="text-lg font-bold text-primary mb-2">Login Sistem</h3>
                 <p class="text-muted text-sm leading-relaxed">
-                    Masuk ke sistem menggunakan akun yang terdaftar.
+                    Masuk ke sistem menggunakan akun yang telah terdaftar untuk mengakses data stok dan transaksi.
                 </p>
             </div>
 
@@ -216,9 +217,9 @@
                 <div class="w-10 h-10 bg-secondary text-text font-bold text-lg flex items-center justify-center rounded mb-4">
                     2
                 </div>
-                <h3 class="text-lg font-bold text-primary mb-2">Pilih Kelas & Tipe Presensi</h3>
+                <h3 class="text-lg font-bold text-primary mb-2">Kelola Stok Barang</h3>
                 <p class="text-muted text-sm leading-relaxed">
-                    Pilih kelas serta jenis presensi: harian atau per mata pelajaran.
+                    Tambahkan, ubah, atau perbarui data barang serta jumlah stok yang tersedia di toko.
                 </p>
             </div>
 
@@ -226,9 +227,9 @@
                 <div class="w-10 h-10 bg-secondary text-text font-bold text-lg flex items-center justify-center rounded mb-4">
                     3
                 </div>
-                <h3 class="text-lg font-bold text-primary mb-2">Isi & Simpan Absensi</h3>
+                <h3 class="text-lg font-bold text-primary mb-2">Catat Transaksi</h3>
                 <p class="text-muted text-sm leading-relaxed">
-                    Tandai kehadiran siswa sesuai kondisi, lalu simpan data.
+                    Lakukan pencatatan transaksi barang masuk maupun keluar, lalu simpan data secara otomatis.
                 </p>
             </div>
 

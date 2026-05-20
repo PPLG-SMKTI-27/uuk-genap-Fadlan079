@@ -102,11 +102,25 @@
                                 </td>
 
                                 <td class="py-2 px-4 font-mono text-xs text-gray-500">
-                                    {{ $t->total_price ?? '-' }} PCS  
+                                    Rp {{ number_format($t->total_price, 0, ',', '.') }}
                                 </td>
 
-                                <td class="py-2 px-4 font-mono text-xs text-gray-500">
-                                    {{ $t->status ?? '-' }}
+                                <td class="py-2 px-4">
+                                    @if($t->status == 'pending')
+                                        <span class="px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-700 font-semibold">
+                                            Pending
+                                        </span>
+
+                                    @elseif($t->status == 'completed')
+                                        <span class="px-2 py-1 text-xs rounded bg-green-100 text-green-700 font-semibold">
+                                            Completed
+                                        </span>
+
+                                    @else
+                                        <span class="px-2 py-1 text-xs rounded bg-red-100 text-red-700 font-semibold">
+                                            Cancelled
+                                        </span>
+                                    @endif
                                 </td>
                                 <td class="py-2 px-4 text-center">
                                     <div class="flex items-center justify-center gap-1.5">

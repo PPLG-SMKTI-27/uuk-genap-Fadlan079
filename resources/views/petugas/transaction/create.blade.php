@@ -75,6 +75,40 @@
                            required>
                 </div>
             </div>
+
+            <div class="space-y-1.5">
+                <label class="block font-bold text-sm text-text">
+                    Produk <span class="text-red-500">*</span>
+                </label>
+
+                <select name="product_id"
+                        class="w-full p-2.5 rounded border"
+                        required>
+
+                    <option selected disabled>-- Pilih Produk --</option>
+
+                    @foreach($products as $product)
+                        <option value="{{ $product->id }}">
+                            {{ $product->product_name }}
+                            - Stok: {{ $product->stock }}
+                            - Rp {{ number_format($product->price, 0, ',', '.') }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="space-y-1.5">
+                <label class="block font-bold text-sm text-text">
+                    Jumlah <span class="text-red-500">*</span>
+                </label>
+
+                <input type="number"
+                    name="quantity"
+                    min="1"
+                    class="w-full p-2.5 rounded border"
+                    placeholder="Masukkan jumlah barang..."
+                    required>
+            </div>
   
             <div class="space-y-1.5">
                 <label for="status" class="block font-bold text-sm text-text">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\transaction;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\transaction_detail;
 
 class TransactionController extends Controller
 {
@@ -16,12 +18,13 @@ class TransactionController extends Controller
 
         $transaction = Transaction::query()
             ->when($search, function ($query) use ($search) {
-                $query->where('customer_name', 'like', "%$search%");
+                $query->where('customer_name', 'like', "%{$search}%")
+                    ->orWhere('transaction_no', 'like', "%{$search}%");
             })
             ->latest()
             ->paginate(10)
             ->withQueryString();
-        
+
         return view('petugas.transaction.index', compact('transaction'));
     }
 
@@ -30,8 +33,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        $status = Transaction::pluck('status');
-        return view('petugas.transaction.create', compact('status'));
+        $products = Product::all();
+
+        return view('petugas.transaction.create', compact('products'));
     }
 
     /**
@@ -43,30 +47,47 @@ class TransactionController extends Controller
         $request->validate([
             'date' => 'required',
             'customer_name' => 'required',
-            'total_price' => 'required',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
             'status' => 'required',
         ]);
+
+        $product = Product::findOrFail($request->product_id);
+
+        if ($request->quantity > $product->stock) {
+            return back()->with('error', 'Stok tidak mencukupi');
+        }
+
+        $subtotal = $product->price * $request->quantity;
 
         $lastTransaction = Transaction::latest()->first();
 
         $number = 1;
 
         if ($lastTransaction) {
-
             $lastNumber = (int) substr($lastTransaction->transaction_no, 4);
-
             $number = $lastNumber + 1;
         }
 
         $transactionNo = 'INV-' . str_pad($number, 4, '0', STR_PAD_LEFT);
 
-        Transaction::create([
+        $transaction = Transaction::create([
             'transaction_no' => $transactionNo,
             'date' => $request->date,
             'customer_name' => $request->customer_name,
-            'total_price' => $request->total_price,
+            'total_price' => $subtotal,
             'status' => $request->status,
         ]);
+
+        transaction_detail::create([
+            'transaction_id' => $transaction->id,
+            'product_id' => $product->id,
+            'quantity' => $request->quantity,
+            'unit_price' => $product->price,
+            'subtotal' => $subtotal,
+        ]);
+
+        $product->decrement('stock', $request->quantity);
 
         return redirect()->route('petugas.kelola-transaksi')
             ->with('success', 'Transaksi berhasil ditambahkan');
