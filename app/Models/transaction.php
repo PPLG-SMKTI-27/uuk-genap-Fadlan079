@@ -13,4 +13,9 @@ class transaction extends Model
         'total_price',
         'status',
     ]);
+
+    public function details()
+    {
+        return $this->hasMany(transaction_detail::class);
+    }
 }

@@ -137,6 +137,9 @@
                                         <a href="{{ route('transaction.edit', $t->id) }}" class="p-1.5 bg-primary/10 hover:bg-primary/20 text-primary rounded transition" title="Edit Siswa">
                                             <i class="fa-solid fa-pen text-[10px]"></i>
                                         </a>
+                                        <a href="{{ route('transaction.show', $t->id) }}" class="p-1.5 bg-secondary/20 hover:bg-secondary/40 text-primary rounded transition" title="Detail Transaksi">
+                                            <i class="fa-solid fa-eye text-[10px]"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -26,13 +27,13 @@ Route::middleware(['auth'])->group(function () {
         return redirect('/petugas/dashboard');
     })->name('dashboard');
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->middleware('role:admin');
+    Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])
+        ->middleware('role:admin')
+        ->name('admin.dashboard');
 
-    Route::get('/petugas/dashboard', function () {
-        return view('petugas.dashboard');
-    })->middleware('role:petugas,admin');
+    Route::get('/petugas/dashboard', [DashboardController::class, 'petugasDashboard'])
+        ->middleware('role:petugas,admin')
+        ->name('petugas.dashboard');
 
     Route::middleware('role:petugas,admin')->group(function () {
         Route::resource('product', ProductController::class);

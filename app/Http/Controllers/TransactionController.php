@@ -100,7 +100,8 @@ class TransactionController extends Controller
      */
     public function show(transaction $transaction)
     {
-        //
+        $transaction->load('details.product');
+        return view('petugas.transaction.show', compact('transaction'));
     }
 
     /**
