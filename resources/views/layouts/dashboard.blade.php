@@ -31,25 +31,51 @@
                 </div>
 
                 <nav class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
-                    <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('petugas/dashboard') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
+                    <a href="/dashboard"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
+                    {{ request()->is('*dashboard') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
                         <i class="fa-solid fa-house w-5 text-center text-lg"></i>
                         <span class="text-sm">Home</span>
-                    </a>    
+                    </a>
 
-                    <a href="/petugas/kelola-produk" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('petugas/kelola-produk') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    <a href="/petugas/kelola-produk"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
+                    {{ request()->is('petugas/kelola-produk') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
                         <i class="fa-solid fa-box w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Produk</span>
                     </a>
 
-                    <a href="/petugas/kelola-transaksi" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('petugas/kelola-transaksi') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    <a href="/petugas/kelola-transaksi"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
+                    {{ request()->is('petugas/kelola-transaksi') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
                         <i class="fa-solid fa-cash-register w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Transaksi</span>
                     </a>
 
-                    <a href="/petugas/kategori" class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4 {{ request()->is('petugas/kategori') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    <a href="/petugas/kategori"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
+                    {{ request()->is('petugas/kategori') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
                         <i class="fa-solid fa-layer-group w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Kategori</span>
                     </a>
+
+                    @if(auth()->user()->role == 'admin')
+
+                        <a href="/admin/kelola-petugas"
+                        class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
+                        {{ request()->is('admin/kelola-petugas') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+
+                            <i class="fa-solid fa-users-gear w-5 text-center text-lg"></i>
+                            <span class="text-sm">Kelola Petugas</span>
+                        </a>
+
+                    @endif
+
                 </nav>
 
                 <div class="p-4 border-t border-white/10 bg-primary-light/10 shrink-0">

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('transaction_no')->unique();
             $table->date('date');
             $table->string('customer_name');
-            $table->decimal('total_price', 8, 2);
+            $table->decimal('total_price', 10, 2);
             $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
             $table->timestamps();
         });

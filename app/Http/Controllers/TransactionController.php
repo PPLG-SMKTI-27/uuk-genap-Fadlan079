@@ -52,6 +52,8 @@ class TransactionController extends Controller
             'status' => 'required',
         ]);
 
+       
+
         $product = Product::findOrFail($request->product_id);
 
         if ($request->quantity > $product->stock) {

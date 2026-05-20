@@ -63,17 +63,14 @@
                        required>
             </div>
 
-            <div class="space-y-1.5">
-                <div class="space-y-1.5">
-                    <label for="total_price" class="block font-bold text-sm text-text">
-                        Total Harga <span class="text-red-500">*</span>
-                    </label>
-                    <input type="number"
-                           name="total_price"
-                           class="w-full p-2.5 rounded border border-red-500 focus:ring-red-500/20 focus:border-red-500"
-                           placeholder="Masukan total harga..."
-                           required>
-                </div>
+            <div>
+                <label class="block mb-1 font-medium">Total Harga</label>
+
+                <input
+                    type="text"
+                    id="total_price"
+                    class="w-full border rounded-lg p-2 bg-gray-100"
+                    readonly>
             </div>
 
             <div class="space-y-1.5">
@@ -82,16 +79,21 @@
                 </label>
 
                 <select name="product_id"
+                        id="product_id"
                         class="w-full p-2.5 rounded border"
                         required>
 
                     <option selected disabled>-- Pilih Produk --</option>
 
                     @foreach($products as $product)
-                        <option value="{{ $product->id }}">
+                        <option
+                            value="{{ $product->id }}"
+                            data-price="{{ $product->price }}">
+
                             {{ $product->product_name }}
                             - Stok: {{ $product->stock }}
                             - Rp {{ number_format($product->price, 0, ',', '.') }}
+
                         </option>
                     @endforeach
                 </select>
@@ -104,6 +106,7 @@
 
                 <input type="number"
                     name="quantity"
+                    id="quantity"
                     min="1"
                     class="w-full p-2.5 rounded border"
                     placeholder="Masukkan jumlah barang..."
@@ -142,3 +145,31 @@
     </div>
 </section>
 @endsection
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const productSelect = document.getElementById('product_id');
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceInput = document.getElementById('total_price');
+
+    function updateTotalPrice() {
+
+        const selectedOption =
+            productSelect.options[productSelect.selectedIndex];
+
+        const price = selectedOption.dataset.price || 0;
+
+        const quantity = quantityInput.value || 0;
+
+        const total = price * quantity;
+
+        totalPriceInput.value =
+            'Rp ' + new Intl.NumberFormat('id-ID').format(total);
+    }
+
+    productSelect.addEventListener('change', updateTotalPrice);
+    quantityInput.addEventListener('input', updateTotalPrice);
+
+});
+</script>

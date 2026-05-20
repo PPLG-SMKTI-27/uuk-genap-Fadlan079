@@ -72,9 +72,6 @@
         </form>
 
         <div class="flex flex-col items-center gap-6 mt-8 text-center pt-6 border-t border-gray-50">
-            <a href="{{ route('register') }}" class="text-xs font-bold text-muted hover:text-primary transition inline-flex items-center gap-1 mb-2">
-                Belum Punya Akun? Daftar Sekarang!
-            </a>
             <a href="/" class="text-xs font-bold text-muted hover:text-primary transition inline-flex items-center gap-1 mb-2">
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
             </a>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -31,41 +32,44 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/petugas/dashboard', function () {
         return view('petugas.dashboard');
-    })->middleware('role:petugas');
+    })->middleware('role:petugas,admin');
 
     Route::get('/petugas/kelola-produk', [ProductController::class, 'index'])
-    ->middleware('role:petugas')->name('petugas.kelola-produk');
+    ->middleware('role:petugas,admin')->name('petugas.kelola-produk');
 
     Route::get('/petugas/create', [ProductController::class, 'create'])
-    ->middleware('role:petugas')->name('petugas.create');
+    ->middleware('role:petugas,admin')->name('petugas.create');
 
     Route::post('/petugas/store', [ProductController::class, 'store'])
-    ->middleware('role:petugas')->name('petugas.store');
+    ->middleware('role:petugas,admin')->name('petugas.store');
 
     Route::put('/petugas/update/{product}', [ProductController::class, 'update'])
-    ->middleware('role:petugas')
+    ->middleware('role:petugas,admin')
     ->name('petugas.update');
 
     Route::resource('product', ProductController::class);
 
     Route::get('/petugas/kelola-transaksi', [TransactionController::class, 'index'])
-    ->middleware('role:petugas')->name('petugas.kelola-transaksi');
+    ->middleware('role:petugas,admin')->name('petugas.kelola-transaksi');
 
     Route::get('/petugas/transaksi/create', [TransactionController::class, 'create'])
-    ->middleware('role:petugas')->name('petugas.transaksi.create');
+    ->middleware('role:petugas,admin')->name('petugas.transaksi.create');
 
     Route::post('/petugas/transaksi/store', [TransactionController::class, 'store'])
     ->middleware('role:petugas')->name('petugas.transaksi.store');
 
     Route::put('/petugas/transaksi/update/{transaction}', [TransactionController::class, 'update'])
-    ->middleware('role:petugas')->name('petugas.transaksi.update');
+    ->middleware('role:petugas,admin')->name('petugas.transaksi.update');
 
     Route::resource('transaction', TransactionController::class);
 
     Route::get('/petugas/kategori', [CategorieController::class, 'index'])
-    ->middleware('role:petugas')->name('petugas.kategori');
+    ->middleware('role:petugas,admin')->name('petugas.kategori');
 
     Route::resource('kategori', CategorieController::class);
+    
+    Route::get('/admin/kelola-petugas', [UserController::class, 'index'])
+    ->middleware('role:admin')->name('admin.kelola-petugas');
 });
 
 Route::middleware('auth')->group(function () {
