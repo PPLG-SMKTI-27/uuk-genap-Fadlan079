@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Kelola Produk')
+@section('title', 'Kelola Petugas')
 
 @section('content')
 <section class="p-5">
@@ -16,10 +16,10 @@
         <div class="relative z-10 px-4 py-8 md:px-8 md:py-10 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="w-full md:w-2/3 space-y-4">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
-                    Daftar Produk<br>
+                    Daftar Petugas<br>
                 </h2>
                 <p class="text-gray-200 text-sm md:text-base max-w-md leading-relaxed">
-                    Manajemen dan monitoring ptoduk anda.
+                    Manajemen dan monitoring petugas anda.
                 </p>
             </div>
 
@@ -47,12 +47,12 @@
 
 <section class="p-5">
     <div class="flex justify-between p-2 items-center">
-        <a href="{{route('petugas.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
-            <i class="fa-solid fa-plus"></i> Tambah Produk
+        <a href="{{route('user.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
+            <i class="fa-solid fa-plus"></i> Tambah Petugas
         </a>
-        <form action="{{ route('petugas.kelola-produk') }}" method="GET">
+        <form action="{{ route('user.index') }}" method="GET">
             @csrf
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Produk...."
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Petugas...."
             class="bg-bg shadow-md rounded-md py-2 px-2.5">
             <button type="submit"
             class="bg-primary py-2 px-2.5 rounded-md text-white hover:bg-primary-light shadow-md">
@@ -78,6 +78,7 @@
                                 <th class="py-2.5 px-4">Nama</th>
                                 <th class="py-2.5 px-4">Email</th>
                                 <th class="py-2.5 px-4">Role</th>
+                                <th class="py-2.5 px-4 w-20 text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-50 text-sm text-text">
@@ -95,13 +96,32 @@
                                 <td class="py-2 px-4 font-mono text-xs text-gray-500 ">
                                     {{$s->role ?? '-' }}
                                 </td>
+                                <td class="py-2 px-4 text-center">
+                                    <div class="flex items-center justify-center gap-1.5">
+                                        @if ($s->id !== auth()->id())
+                                            <form action="{{ route('user.destroy', $s->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                    onclick="return confirm('Yakin hapus petugas ini?')"
+                                                    class="p-1.5 bg-danger/20 hover:bg-danger/40 text-danger rounded transition" title="Hapus Petugas">
+                                                    <i class="fa-solid fa-trash text-[10px]"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                        <a href="{{ route('user.edit', $s->id) }}" class="p-1.5 bg-primary/10 hover:bg-primary/20 text-primary rounded transition" title="Edit Petugas">
+                                            <i class="fa-solid fa-pen text-[10px]"></i>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
 
                             @empty
                             <section class="py-10 px-5">
                                     <div class="flex flex-col items-center justify-center gap-2">
                                         <i class="fa-solid fa-box text-4xl text-gray-300"></i>
-                                        <span class="font-medium">Belum ada data produk yang ditambahkan.</span>
+                                        <span class="font-medium">Belum ada data petugas yang ditambahkan.</span>
                                     </div>
                             </section>
 

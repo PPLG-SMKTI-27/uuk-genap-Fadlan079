@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <form action="{{ route('petugas.transaksi.store')}}" method="POST" class="p-6 space-y-5">
+        <form action="{{ route('transaction.store')}}" method="POST" class="p-6 space-y-5">
             @csrf
 
             <div class="space-y-1.5">

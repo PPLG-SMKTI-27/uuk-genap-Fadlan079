@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Kelola Produk')
+@section('title', 'Kelola Kategori')
 
 @section('content')
 <section class="p-5">
@@ -47,10 +47,10 @@
 
 <section class="p-5">
     <div class="flex justify-between p-2 items-center">
-        <a href="{{route('petugas.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
+        <a href="{{route('kategori.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
             <i class="fa-solid fa-plus"></i> Tambah Kategori
         </a>
-        <form action="{{ route('petugas.kategori') }}" method="GET">
+        <form action="{{ route('kategori.index') }}" method="GET">
             @csrf
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Kategori...."
             class="bg-bg shadow-md rounded-md py-2 px-2.5">
@@ -115,11 +115,11 @@
                             <section class="py-10 px-5">
                                     <div class="flex flex-col items-center justify-center gap-2">
                                         <i class="fa-solid fa-box text-4xl text-gray-300"></i>
-                                        <span class="font-medium">Belum ada data produk yang ditambahkan.</span>
+                                        <span class="font-medium">Belum ada data kategori yang ditambahkan.</span>
                                     </div>
                             </section>
 
-                                {{$product->links()}}
+                                {{$category->links()}}
                             @endforelse
                         </tbody>
                     </table>

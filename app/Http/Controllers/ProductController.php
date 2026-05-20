@@ -65,7 +65,7 @@ class ProductController extends Controller
             'unit' => $request->unit,
         ]);
 
-        return redirect()->route('petugas.kelola-produk')
+        return redirect()->route('product.index')
             ->with('success', 'Produk berhasil ditambahkan');
     }
 
@@ -108,7 +108,7 @@ class ProductController extends Controller
             'unit' => $request->unit,
         ]);
 
-        return redirect()->route('petugas.kelola-produk')
+        return redirect()->route('product.index')
             ->with('success', 'Produk berhasil diperbarui');
     }
 
@@ -119,7 +119,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('petugas.kelola-produk')
+        return redirect()->route('product.index')
             ->with('success', 'Data produk berhasil dihapus');
     }
 }

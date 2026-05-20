@@ -40,25 +40,25 @@
                         <span class="text-sm">Home</span>
                     </a>
 
-                    <a href="/petugas/kelola-produk"
+                    <a href="{{ route('product.index') }}"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
-                    {{ request()->is('petugas/kelola-produk') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    {{ request()->routeIs('product.*') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
 
                         <i class="fa-solid fa-box w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Produk</span>
                     </a>
 
-                    <a href="/petugas/kelola-transaksi"
+                    <a href="{{ route('transaction.index') }}"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
-                    {{ request()->is('petugas/kelola-transaksi') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    {{ request()->routeIs('transaction.*') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
 
                         <i class="fa-solid fa-cash-register w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Transaksi</span>
                     </a>
 
-                    <a href="/petugas/kategori"
+                    <a href="{{ route('kategori.index') }}"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
-                    {{ request()->is('petugas/kategori') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                    {{ request()->routeIs('kategori.*') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
 
                         <i class="fa-solid fa-layer-group w-5 text-center text-lg"></i>
                         <span class="text-sm">Kelola Kategori</span>
@@ -66,9 +66,9 @@
 
                     @if(auth()->user()->role == 'admin')
 
-                        <a href="/admin/kelola-petugas"
+                        <a href="{{ route('user.index') }}"
                         class="flex items-center gap-3 px-4 py-3 rounded-lg transition border-l-4
-                        {{ request()->is('admin/kelola-petugas') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
+                        {{ request()->routeIs('user.*') ? 'bg-white/10 text-secondary font-bold border-secondary' : 'text-gray-400 font-medium border-transparent hover:bg-white/10 hover:text-secondary' }}">
 
                             <i class="fa-solid fa-users-gear w-5 text-center text-lg"></i>
                             <span class="text-sm">Kelola Petugas</span>

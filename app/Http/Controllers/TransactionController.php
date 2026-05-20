@@ -91,7 +91,7 @@ class TransactionController extends Controller
 
         $product->decrement('stock', $request->quantity);
 
-        return redirect()->route('petugas.kelola-transaksi')
+        return redirect()->route('transaction.index')
             ->with('success', 'Transaksi berhasil ditambahkan');
     }
 
@@ -130,7 +130,7 @@ class TransactionController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('petugas.kelola-transaksi')
+        return redirect()->route('transaction.index')
             ->with('success', 'Produk berhasil diperbarui');
     }
 
@@ -141,7 +141,7 @@ class TransactionController extends Controller
     {
         $transaction->delete();
 
-        return redirect()->route('petugas.kelola-transaksi')
+        return redirect()->route('transaction.index')
             ->with('success', 'Data transaksi berhasil dihapus');
     }
 }

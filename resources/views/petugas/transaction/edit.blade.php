@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <form action="{{ route('petugas.transaksi.update', $transaction->id)}}" method="POST" class="p-6 space-y-5">
+        <form action="{{ route('transaction.update', $transaction->id)}}" method="POST" class="p-6 space-y-5">
             @csrf
             @method('PUT')
 

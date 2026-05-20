@@ -34,42 +34,13 @@ Route::middleware(['auth'])->group(function () {
         return view('petugas.dashboard');
     })->middleware('role:petugas,admin');
 
-    Route::get('/petugas/kelola-produk', [ProductController::class, 'index'])
-    ->middleware('role:petugas,admin')->name('petugas.kelola-produk');
+    Route::middleware('role:petugas,admin')->group(function () {
+        Route::resource('product', ProductController::class);
+        Route::resource('transaction', TransactionController::class);
+        Route::resource('kategori', CategorieController::class);
+    });
 
-    Route::get('/petugas/create', [ProductController::class, 'create'])
-    ->middleware('role:petugas,admin')->name('petugas.create');
-
-    Route::post('/petugas/store', [ProductController::class, 'store'])
-    ->middleware('role:petugas,admin')->name('petugas.store');
-
-    Route::put('/petugas/update/{product}', [ProductController::class, 'update'])
-    ->middleware('role:petugas,admin')
-    ->name('petugas.update');
-
-    Route::resource('product', ProductController::class);
-
-    Route::get('/petugas/kelola-transaksi', [TransactionController::class, 'index'])
-    ->middleware('role:petugas,admin')->name('petugas.kelola-transaksi');
-
-    Route::get('/petugas/transaksi/create', [TransactionController::class, 'create'])
-    ->middleware('role:petugas,admin')->name('petugas.transaksi.create');
-
-    Route::post('/petugas/transaksi/store', [TransactionController::class, 'store'])
-    ->middleware('role:petugas')->name('petugas.transaksi.store');
-
-    Route::put('/petugas/transaksi/update/{transaction}', [TransactionController::class, 'update'])
-    ->middleware('role:petugas,admin')->name('petugas.transaksi.update');
-
-    Route::resource('transaction', TransactionController::class);
-
-    Route::get('/petugas/kategori', [CategorieController::class, 'index'])
-    ->middleware('role:petugas,admin')->name('petugas.kategori');
-
-    Route::resource('kategori', CategorieController::class);
-    
-    Route::get('/admin/kelola-petugas', [UserController::class, 'index'])
-    ->middleware('role:admin')->name('admin.kelola-petugas');
+    Route::resource('user', UserController::class)->middleware('role:admin');
 });
 
 Route::middleware('auth')->group(function () {

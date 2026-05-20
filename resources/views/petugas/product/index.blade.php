@@ -75,10 +75,10 @@
 
 <section class="p-5">
     <div class="flex justify-between p-2 items-center">
-        <a href="{{route('petugas.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
+        <a href="{{route('product.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
             <i class="fa-solid fa-plus"></i> Tambah Produk
         </a>
-        <form action="{{ route('petugas.kelola-produk') }}" method="GET">
+        <form action="{{ route('product.index') }}" method="GET">
             @csrf
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Produk...."
             class="bg-bg shadow-md rounded-md py-2 px-2.5">

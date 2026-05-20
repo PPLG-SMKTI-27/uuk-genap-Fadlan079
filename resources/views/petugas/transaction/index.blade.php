@@ -48,10 +48,10 @@
 
 <section class="p-5">
     <div class="flex justify-between p-2 items-center">
-        <a href="{{route('petugas.transaksi.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
+        <a href="{{route('transaction.create')}}" class="p-2 bg-primary rounded-md border-t-4 border-secondary text-white font-bold my-2 text-center shadow-md hover:bg-primary-light">
             <i class="fa-solid fa-plus"></i> Buat Transaksi baru
         </a>
-        <form action="{{ route('petugas.kelola-transaksi') }}" method="GET">
+        <form action="{{ route('transaction.index') }}" method="GET">
             @csrf
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Transaksi...."
             class="bg-bg shadow-md rounded-md py-2 px-2.5">

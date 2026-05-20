@@ -14,17 +14,22 @@ class RoleMiddleware
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
         if (!Auth::check()) {
             return redirect('/login');
         }
 
-        $roles = array_map(fn($r) => strtolower(trim($r)), explode(',', $role));
+        $parsedRoles = [];
+        foreach ($roles as $role) {
+            $parsedRoles = array_merge($parsedRoles, explode(',', $role));
+        }
+
+        $parsedRoles = array_map(fn($r) => strtolower(trim($r)), $parsedRoles);
 
         $userRole = strtolower(trim(auth()->user()->role));
 
-        if (!in_array($userRole, $roles)) {
+        if (!in_array($userRole, $parsedRoles)) {
             abort(403);
         }
 
