@@ -1,15 +1,24 @@
 @import 'tailwindcss';
 
 :root {
-    --color-bg: #F4F7FC;
-    --color-primary: #E30613;
-    --color-primary-light: #B7050F;
-    --color-secondary: #FFD028;
-    --color-text: #1F2937;
-    --color-muted: #6B7280;
-    --color-success: #22C55E;
-    --color-danger: #EF4444;
-    --color-warning: #FACC15;
+--color-bg: #F8FAFC;
+  
+  /* Ganti ke Hijau Emerald Premium */
+  --color-primary: #064E3B; 
+  --color-primary-light: #047857;
+  
+  /* Tetap gunakan kuning/emas sebagai aksen tombol 'Bayar' atau 'Diskon' */
+  --color-secondary: #F59E0B; 
+  
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+  --color-warning: #F59E0B;
+
+  --color-card: #FFFFFF;
+  --color-border: #E2E8F0;
 }
 
 @theme {
