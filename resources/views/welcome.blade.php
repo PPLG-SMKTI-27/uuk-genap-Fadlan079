@@ -7,8 +7,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary flex items-center justify-center rounded text-secondary text-xl">
-                    <i class="fa-solid fa-store"></i>
+                <div class="w-10 h-10 flex items-center justify-center rounded text-secondary text-xl">
+                    <img src="{{asset('maju-bersama.png')}}" alt="" class="w-10 h-10 rounded">
                 </div>
                 <div>
                     <h1 class="text-primary font-bold text-lg leading-tight uppercase tracking-wide">Maju Bersama</h1>
@@ -101,7 +101,7 @@
                             <!-- Sidebar -->
                             <div class="w-1/4 bg-primary text-white p-4">
                                 <div class="flex items-center gap-2 mb-8">
-                                    <div class="w-6 h-6 bg-secondary rounded text-primary flex items-center justify-center text-[10px]"><i class="fa-solid fa-store"></i></div>
+                                    <div class="w-10 h-10 rounded text-primary flex items-center justify-center text-[10px]"><img src="{{asset('maju-bersama.png')}}" alt="" class="w-10 h-10 rounded"></div>
                                     <div class="font-bold text-sm">MAJU BERSAMA</div>
                                 </div>
                                 <div class="space-y-2">
@@ -254,8 +254,8 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-white flex items-center justify-center rounded text-primary text-xl">
-                        <i class="fa-solid fa-store"></i>
+                    <div class="w-10 h-10 flex items-center justify-center rounded text-primary text-xl">
+                        <img src="{{asset('maju-bersama.png')}}" alt="" class="w-10 h-10 rounded">
                     </div>
                     <span class="font-bold text-xl tracking-wide">MAJU BERSAMA</span>
                 </div>

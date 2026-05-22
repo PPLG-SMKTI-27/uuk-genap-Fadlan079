@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-        <link rel="icon" type="image/svg+xml" href="{{ asset('logo.png') }}">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('maju-bersama.png') }}">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -22,7 +22,7 @@
 
                 <div class="h-20 flex items-center px-6 border-b border-white/10 shrink-0">
                     <div class="w-9 h-9 rounded flex items-center justify-center text-primary font-black text-lg mr-3 shadow-sm">
-                        <img src="{{ asset('logo2.png') }}" alt="">
+                        <img src="{{ asset('maju-bersama.png') }}" alt="">
                     </div>
                     <div class="flex flex-col">
                         <span class="text-white font-bold text-sm tracking-wide uppercase leading-tight">Maju Bersama</span>
